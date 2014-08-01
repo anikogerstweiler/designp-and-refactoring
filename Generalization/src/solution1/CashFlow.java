@@ -12,14 +12,24 @@ public abstract class CashFlow {
 	protected BigDecimal rate;
 
 	public CashFlow(BigDecimal rate, List<CashFlowItem> cashFlowItems) {
-		if (rate == null) {
-			throw new IllegalArgumentException("Parameter rate cannot be null.");
-		}
+		validateRate(rate);
+		
+		validateCashFlowItem(cashFlowItems);
+		
+		this.cashFlowItems = cashFlowItems;
+		this.rate = rate;
+	}
+
+	private void validateCashFlowItem(List<CashFlowItem> cashFlowItems) {
 		if (cashFlowItems == null) {
 			throw new IllegalArgumentException("Parameter CashFlowItems cannot be null.");
 		}
-		this.cashFlowItems = cashFlowItems;
-		this.rate = rate;
+	}
+
+	private void validateRate(BigDecimal rate) {
+		if (rate == null) {
+			throw new IllegalArgumentException("Parameter rate cannot be null.");
+		}
 	}
 
 	public abstract BigDecimal discountedValue();

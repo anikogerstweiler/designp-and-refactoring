@@ -22,14 +22,24 @@ public class CashFlowItem {
 	 *             One or more parameters are null.
 	 */
 	public CashFlowItem(Date date, BigDecimal amount) {
-		if (date == null) {
-			throw new IllegalArgumentException("Parameter date cannot be null.");
-		}
+		validateDate(date);
+		
+		validateAmount(amount);
+		
+		this.date = date;
+		this.amount = amount;
+	}
+
+	private void validateAmount(BigDecimal amount) {
 		if (amount == null) {
 			throw new IllegalArgumentException("Parameter amount cannot be null.");
 		}
-		this.date = date;
-		this.amount = amount;
+	}
+
+	private void validateDate(Date date) {
+		if (date == null) {
+			throw new IllegalArgumentException("Parameter date cannot be null.");
+		}
 	}
 
 	public BigDecimal getAmount() {

@@ -11,10 +11,19 @@ public class DayCashFlowBuilder extends CashFlowBuilder {
 	protected void checkDate(int year, int month, int day) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(getDate(year, month, day));
+		
+		validateYearIsNotNull(cal);
+
+		validateIsTheSameYear(cal);
+	}
+
+	private void validateYearIsNotNull(Calendar cal) {
 		if (inputYear == null) {
 			inputYear = cal.get(Calendar.YEAR);
 		}
+	}
 
+	private void validateIsTheSameYear(Calendar cal) {
 		if (!inputYear.equals(cal.get(Calendar.YEAR))) {
 			throw new IllegalArgumentException("DailyCashFlow only accepts items from a single year.");
 		}
