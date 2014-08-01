@@ -34,6 +34,5 @@ public class FileLogger implements Logger {
 	
 	public void close() {
 		writer.close();
-		
 	}
 }

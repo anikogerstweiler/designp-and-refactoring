@@ -22,6 +22,7 @@ public class Main {
 		
 		Thread counter2secThread = new Thread(counter2sec);
 		Thread counter3secThread = new Thread(counter3sec);
+		
 		counter2secThread.start();
 		counter3secThread.start();
 		
