@@ -7,10 +7,6 @@ public class Shop {
 
 	private List<Product> products = new ArrayList<Product>();
 
-	public Shop() {
-
-	}
-
 	public void addProduct(Product product) {
 		products.add(product);
 	}
@@ -22,9 +18,9 @@ public class Shop {
 	public String listProducts() {
 		StringBuilder stringBuilder = new StringBuilder();
 		for (Product product : products) {
-			stringBuilder.append(product);
-			stringBuilder.append('\n');
+			stringBuilder.append(product).append('\n');
 		}
+		
 		return stringBuilder.toString();
 	}
 }
