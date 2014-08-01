@@ -3,10 +3,12 @@ package adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapter.Fifo;
+
 public class FifoObjectAdapter<T> implements Fifo<T> {
 
 	private List<T> elements = new ArrayList<>();
-	
+
 	@Override
 	public void put(T t) {
 		elements.add(t);
