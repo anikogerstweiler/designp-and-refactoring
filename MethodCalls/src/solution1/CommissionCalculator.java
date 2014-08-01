@@ -33,9 +33,7 @@ public class CommissionCalculator {
 		this.upperLimit = new BigDecimal(upperLimit);
 	}
 
-	public CommissionCalculator() {
-		// TODO Auto-generated constructor stub
-	}
+	public CommissionCalculator() {	}
 
 	public BigDecimal calculateCommission(BigDecimal amount, Date periodStart, Date periodEnd, boolean isLeapYear) {
 		BigDecimal yearLength = new BigDecimal("365");
