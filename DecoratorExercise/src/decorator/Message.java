@@ -12,18 +12,18 @@ public class Message {
 
 	public Message(String sender, Date timestamp, String message) {
 		super();
-		if (sender == null) {
-			throw new IllegalArgumentException("Sender cannot be null");
+
+		this.sender = checkNotNull(sender, "Sender cannot be null");
+		this.timestamp = checkNotNull(timestamp, "Timestamp cannot be null");
+		this.message = checkNotNull(message, "Message cannot be null");
+	}
+
+	private <T> T checkNotNull(T input, String errorMessage) {
+		if (input == null) {
+			throw new IllegalArgumentException(errorMessage);
 		}
-		if (timestamp == null) {
-			throw new IllegalArgumentException("Timestamp cannot be null");
-		}
-		if (message == null) {
-			throw new IllegalArgumentException("Message cannot be null");
-		}
-		this.sender = sender;
-		this.timestamp = timestamp;
-		this.message = message;
+
+		return input;
 	}
 
 	public String getSender() {
