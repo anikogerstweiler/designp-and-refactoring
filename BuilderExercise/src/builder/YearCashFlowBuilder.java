@@ -30,13 +30,13 @@ public class YearCashFlowBuilder implements CashFlowBuilder {
 	public void addExpense(int year, int month, int day, BigDecimal amount) {
 		validateDate(year, month, day);
 		
-		Date date = creteDate(year, month, day);
+		Date date = createDate(year, month, day);
 		
 		CashFlowItem item = new CashFlowItem(date , amount.negate());
 		cashFlowItems.add(item);
 	}
 
-	private Date creteDate(int year, int month, int day) {
+	private Date createDate(int year, int month, int day) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.YEAR, year);
 		calendar.set(Calendar.MONTH, month - 1);
@@ -54,7 +54,7 @@ public class YearCashFlowBuilder implements CashFlowBuilder {
 	@Override
 	public void addIncome(int year, int month, int day, BigDecimal amount) {
 		validateDate(year, month, day);
-		Date date = creteDate(year, month, day);
+		Date date = createDate(year, month, day);
 		
 		CashFlowItem item = new CashFlowItem(date , amount);
 		cashFlowItems.add(item);

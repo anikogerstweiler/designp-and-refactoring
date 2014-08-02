@@ -17,20 +17,20 @@ public class Main {
 			logger.log("korte");
 			logger.log("dinnye");
 		}
-		
+
 		{
 			Logger logger = new ImmediateLogger(new FileLoggerImplementor(new File("log.txt")));
 			logger.log("almafa");
 			logger.log("korte");
 			logger.log("dinnye");
 		}
-		
+
 		{
 			BufferedLogger logger = new BufferedLogger(new FileLoggerImplementor(new File("log.txt")));
 			logger.log("almafa");
 			logger.log("korte");
 			logger.log("dinnye");
-			
+
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
@@ -38,13 +38,13 @@ public class Main {
 			}
 			logger.flush();
 		}
-		
+
 		{
 			BufferedLogger logger = new BufferedLogger(new StdOutLoggerImplementor());
 			logger.log("almafa");
 			logger.log("korte");
 			logger.log("dinnye");
-			
+
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
