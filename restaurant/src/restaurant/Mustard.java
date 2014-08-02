@@ -1,10 +1,10 @@
 package restaurant;
 
-public class Ketchup extends Extra {
+public class Mustard extends Extra {
 
-	private double effect = 2;
+	private double effect = -1;
 
-	public Ketchup(Product product) {
+	public Mustard(Product product) {
 		super(product);
 	}
 
@@ -12,11 +12,12 @@ public class Ketchup extends Extra {
 	public double calculateEffect(double happiness) {
 		double productEffect = product.calculateEffect(happiness);
 
-		return productEffect * effect;
+		return (productEffect + productEffect * effect) + 1;
 	}
 
 	@Override
 	public String toString() {
-		return product + " with Ketchup";
+		return product + " with Mustard";
 	}
+
 }

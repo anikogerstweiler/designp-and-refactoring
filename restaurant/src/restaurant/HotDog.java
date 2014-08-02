@@ -1,23 +1,17 @@
 package restaurant;
 
-public class HotDog extends Product {
+public class HotDog implements Product {
 
-	private static final double EFFECT = 2;
-	
-	public HotDog(double happiness) {
-		super(happiness);
+	private double effect = 2;
+
+	@Override
+	public double calculateEffect(double happiness) {
+		return effect;
 	}
 
 	@Override
-	public double changeHappiness() {
-		return happiness + EFFECT;
+	public String toString() {
+		return "HotDog";
 	}
-
-	@Override
-	public double getEffect() {
-		return EFFECT;
-	}
-	
-	
 
 }

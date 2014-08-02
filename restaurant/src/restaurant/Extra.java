@@ -1,15 +1,11 @@
 package restaurant;
 
-public abstract class Extra {
-	
+public abstract class Extra implements Product {
+
 	protected Product product;
-	
+
 	public Extra(Product product) {
 		this.product = product;
 	}
-
-	public abstract double getEffect();
-	
-	public abstract double changeEffect();
 
 }

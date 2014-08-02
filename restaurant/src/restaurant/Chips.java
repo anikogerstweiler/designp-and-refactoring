@@ -1,22 +1,17 @@
 package restaurant;
 
-public class Chips extends Product {
+public class Chips implements Product {
 
-	private static final double EFFECT = 0.05;
-	
-	public Chips(double happiness) {
-		super(happiness);
+	private double effect = 0.05;
+
+	@Override
+	public double calculateEffect(double happiness) {
+		return happiness * effect;
 	}
 
 	@Override
-	public double changeHappiness() {
-		return happiness + (happiness * EFFECT) ;
+	public String toString() {
+		return "Chips";
 	}
-
-	@Override
-	public double getEffect() {
-		return EFFECT;
-	}
-	
 
 }
