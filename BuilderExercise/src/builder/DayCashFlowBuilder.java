@@ -30,7 +30,7 @@ public class DayCashFlowBuilder implements CashFlowBuilder {
 
 	@Override
 	public void addExpense(int year, int month, int day, BigDecimal amount) {
-		validateDate(year, month, day);
+		validateInput(year, month, day);
 
 		Date date = crateDate(year, month, day);
 
@@ -47,7 +47,7 @@ public class DayCashFlowBuilder implements CashFlowBuilder {
 		return calendar.getTime();
 	}
 
-	private void validateDate(int year, int month, int day) {
+	private void validateInput(int year, int month, int day) {
 		if (cashFlowItems.isEmpty()) {
 			this.year = year;
 		} else if (this.year != year) {
@@ -57,7 +57,7 @@ public class DayCashFlowBuilder implements CashFlowBuilder {
 
 	@Override
 	public void addIncome(int year, int month, int day, BigDecimal amount) {
-		validateDate(year, month, day);
+		validateInput(year, month, day);
 		Date date = crateDate(year, month, day);
 
 		CashFlowItem item = new CashFlowItem(date , amount);

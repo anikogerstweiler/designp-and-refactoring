@@ -28,7 +28,7 @@ public class YearCashFlowBuilder implements CashFlowBuilder {
 
 	@Override
 	public void addExpense(int year, int month, int day, BigDecimal amount) {
-		validateDate(year, month, day);
+		validateInput(year, month, day);
 		
 		Date date = createDate(year, month, day);
 		
@@ -45,7 +45,7 @@ public class YearCashFlowBuilder implements CashFlowBuilder {
 		return calendar.getTime();
 	}
 
-	private void validateDate(int year, int month, int day) {
+	private void validateInput(int year, int month, int day) {
 		if (month != 1 || day != 1) {
 			throw new IllegalArgumentException("Date must be january 1st");
 		}
@@ -53,7 +53,7 @@ public class YearCashFlowBuilder implements CashFlowBuilder {
 
 	@Override
 	public void addIncome(int year, int month, int day, BigDecimal amount) {
-		validateDate(year, month, day);
+		validateInput(year, month, day);
 		Date date = createDate(year, month, day);
 		
 		CashFlowItem item = new CashFlowItem(date , amount);
