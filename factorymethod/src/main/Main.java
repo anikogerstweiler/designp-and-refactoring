@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		Encryptor encryptor = new RandomEncryptor();
-		encryptor.encrypt("pókmalac");
+		encryptor.encrypt("pokmalac");
 		System.out.println(encryptor.decrypt());
 
 	}
