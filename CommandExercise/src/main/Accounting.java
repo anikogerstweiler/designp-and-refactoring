@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Accounting {
 
-	private Map<String, BigDecimal> accounts = new HashMap<String, BigDecimal>();
+	private Map<String, BigDecimal> accounts = new HashMap<>();
 
 	public BigDecimal getBalance(String account) {
 		return accounts.get(account);
