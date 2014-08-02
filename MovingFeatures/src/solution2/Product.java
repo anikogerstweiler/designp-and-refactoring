@@ -37,9 +37,9 @@ public class Product {
 		stringBuilder.append(name);
 		stringBuilder.append(", Catgories: ");
 		for (Category category : categories) {
-			stringBuilder.append(category);
-			stringBuilder.append(" ");
+			stringBuilder.append(category).append(" ");
 		}
+		
 		return stringBuilder.toString();
 	}
 

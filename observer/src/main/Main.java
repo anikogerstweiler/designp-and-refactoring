@@ -20,8 +20,23 @@ public class Main {
 		counter3sec.addLogger(stdOutLogger);
 		counter3sec.addLogger(fileLogger);
 		
-		new Thread(counter2sec).start();
-		new Thread(counter3sec).start();
+		Thread counter2secThread = new Thread(counter2sec);
+		Thread counter3secThread = new Thread(counter3sec);
+		
+		counter2secThread.start();
+		counter3secThread.start();
+		
+		try {
+			counter2secThread.join();
+			counter3secThread.join();
+			
+			if (fileLogger instanceof FileLogger) {
+				((FileLogger) fileLogger).close();
+			}
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
