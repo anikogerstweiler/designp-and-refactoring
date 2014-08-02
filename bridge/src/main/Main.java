@@ -1,6 +1,7 @@
 package main;
 
 import java.io.File;
+import java.io.IOException;
 
 import logger.Logger;
 import logger.implementor.BufferedLogger;
@@ -19,24 +20,29 @@ public class Main {
 		}
 
 		{
-			Logger logger = new ImmediateLogger(new FileLoggerImplementor(new File("log.txt")));
-			logger.log("almafa");
-			logger.log("korte");
-			logger.log("dinnye");
+			try(FileLoggerImplementor implementor =  new FileLoggerImplementor(new File("log.txt"))) {
+				Logger logger = new ImmediateLogger(implementor);
+				logger.log("almafa");
+				logger.log("korte");
+				logger.log("dinnye");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 		{
-			BufferedLogger logger = new BufferedLogger(new FileLoggerImplementor(new File("log.txt")));
-			logger.log("almafa");
-			logger.log("korte");
-			logger.log("dinnye");
+			try(FileLoggerImplementor implementor = new FileLoggerImplementor(new File("log.txt"))) {
+				BufferedLogger logger = new BufferedLogger(implementor);
+				logger.log("almafa");
+				logger.log("korte");
+				logger.log("dinnye");
 
-			try {
 				Thread.sleep(500);
-			} catch (InterruptedException e) {
+
+				logger.flush();
+			} catch (InterruptedException | IOException e) {
 				e.printStackTrace();
 			}
-			logger.flush();
 		}
 
 		{

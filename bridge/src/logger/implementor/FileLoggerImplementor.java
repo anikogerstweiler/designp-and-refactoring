@@ -5,28 +5,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class FileLoggerImplementor implements LoggerImplementor {
+public class FileLoggerImplementor implements LoggerImplementor, AutoCloseable {
 
-	private File file;
+	private PrintWriter printWriter;
 
-	public FileLoggerImplementor(File file) {
-		this.file = file;
+	public FileLoggerImplementor(File file) throws IOException {
+		printWriter = new PrintWriter(new FileWriter(file, true));
 	}
 
 	@Override
 	public void log(String message) {
-		//TODO: ne nyissuk zarjuk minden sor irasanal a writert!
-		PrintWriter pw = null;
-		try {
-			if (pw == null) {
-				pw = new PrintWriter(new FileWriter(file, true));
-			}
-
-			pw.println(message);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} /*finally {
-			pw.close();
-		}*/
+		printWriter.println(message);
 	}
+
+	@Override
+	public void close() {
+		printWriter.close();
+	}
+
+
 }
